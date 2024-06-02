@@ -7,7 +7,7 @@ type Env = {
   API_SECRET_STRIPE: string
 }
 const DOMAIN = 'http://localhost:5173'
-console.log(process.env.API_SECRET_STRIPE);
+
 const app = new Hono<{ Bindings: Env }>()
 
 app.use('*', cors())
