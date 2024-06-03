@@ -2,7 +2,7 @@ name = "orimi-checkout"
 compatibility_date = "2023-12-01"
 
 # [vars]
-# MY_VAR = "my-variable"
+#  API_SECRET_STRIPE = "sk_test_51PN1TIDxuq8uXEJzJs6tuFzz8EzMX3ryFg7dnJ6C0kyTC6dieFqGRN5oH7gUFgs1asx81RlN4vbspzjyTX3gtm5s00uMJXegPw"
 
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"
