@@ -1,8 +1,8 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import stripe, { type Stripe } from 'stripe'
-import { Product as Cart } from './models'
-
+import { Product as Cart } from './models/productModel'
+import { UserPrimaryData as User } from './models/userModel'
 type Env = {
   API_SECRET_STRIPE: string
 }
@@ -13,7 +13,8 @@ app.use('*', cors())
 
 app.post('/create-checkout-session', async (c) => {
   const body: Cart[] = await c.req.json()
-  console.log('This is body', body)
+  const User: User = await c.req.json()
+  // const user:
 
   const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = body.map(
     (product) => {
@@ -38,8 +39,7 @@ app.post('/create-checkout-session', async (c) => {
     ui_mode: 'embedded',
     line_items,
     mode: 'payment',
-    // customer_email: "pedro@gmail.com",
-   
+    customer_email: User.email,
   })
 
   return c.json({ clientSecret: session.client_secret })
