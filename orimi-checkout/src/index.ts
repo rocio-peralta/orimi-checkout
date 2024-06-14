@@ -14,7 +14,6 @@ app.use('*', cors())
 app.post('/create-checkout-session', async (c) => {
   const body: Cart[] = await c.req.json()
   const User: User = await c.req.json()
-  // const user:
 
   const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = body.map(
     (product) => {
@@ -39,7 +38,8 @@ app.post('/create-checkout-session', async (c) => {
     ui_mode: 'embedded',
     line_items,
     mode: 'payment',
-    customer_email: 'user@gmail.com',
+    return_url: 'http://localhost:5174/about',
+    customer_email: 'rocio@gmail.com',
   })
 
   return c.json({ clientSecret: session.client_secret })
