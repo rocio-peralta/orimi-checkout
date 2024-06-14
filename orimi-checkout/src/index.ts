@@ -39,7 +39,7 @@ app.post('/create-checkout-session', async (c) => {
     ui_mode: 'embedded',
     line_items,
     mode: 'payment',
-    customer_email: User.email,
+    customer_email: 'user@gmail.com',
   })
 
   return c.json({ clientSecret: session.client_secret })
