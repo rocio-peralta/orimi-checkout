@@ -8,8 +8,11 @@ type Env = {
 }
 
 const app = new Hono<{ Bindings: Env }>()
-
+const YOUR_DOMAIN = 'http://localhost:5174'
 app.use('*', cors())
+app.get('/', (c) => {
+  return c.json({ message: 'Hello World' })
+})
 
 app.post('/create-checkout-session', async (c) => {
   const body: Cart[] = await c.req.json()
@@ -38,7 +41,7 @@ app.post('/create-checkout-session', async (c) => {
     ui_mode: 'embedded',
     line_items,
     mode: 'payment',
-    return_url: 'http://localhost:5174/about',
+    return_url: `${YOUR_DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
     customer_email: 'rocio@gmail.com',
   })
 
