@@ -38,11 +38,11 @@ app.post('/create-checkout-session', async (c) => {
   const stripeInstance = new stripe(c.env.API_SECRET_STRIPE)
 
   const session = await stripeInstance.checkout.sessions.create({
-    ui_mode: 'embedded',
-    line_items,
-    mode: 'payment',
-    return_url: `${YOUR_DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
-    customer_email: 'rocio@gmail.com',
+    // ui_mode: 'embedded',
+    // line_items,
+    // mode: 'payment',
+    // return_url: `${YOUR_DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
+    // customer_email: 'rocio@gmail.com',
   })
 
   return c.json({ clientSecret: session.client_secret })
