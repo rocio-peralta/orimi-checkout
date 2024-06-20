@@ -45,7 +45,7 @@ app.post('/create-checkout-session', async (c) => {
     ui_mode: 'embedded',
     line_items,
     mode: 'payment',
-    return_url: `${LOCAL_DOMAIN}/paymentsuccessfull?session_id={CHECKOUT_SESSION_ID}`,
+    return_url: `${DOMAIN}/paymentsuccessfull?session_id={CHECKOUT_SESSION_ID}`,
     customer_email: body.user.email,
   })
 
