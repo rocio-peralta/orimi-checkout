@@ -1,5 +1,8 @@
 name = "orimi-checkout"
 compatibility_date = "2023-12-01"
 
-[dev]
-port=3000
+[env.dev.vars]
+DOMAIN_URL = "http://localhost:5173"
+
+[env.prod.vars]
+DOMAIN_URL = "https://orimi-develop.vercel.app"
